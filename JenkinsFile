@@ -1,0 +1,21 @@
+pipeline{
+    agent 'any'
+
+    stages {
+
+        stage ("checkout stage") {
+
+            echo "checking the code from git repository"
+        }
+
+        stage("Builing stage"){
+
+            sh """
+                ls -lrt
+                mvn install
+                cd target/
+                ls -lrt
+            """
+        }
+    }
+}
