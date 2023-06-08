@@ -5,10 +5,17 @@ pipeline{
 
         stage ("checkout stage") {
 
-            echo "checking the code from git repository"
+            steps{
+
+                     echo "checking the code from git repository"
+            }
+
+           
         }
 
         stage("Builing stage"){
+
+            steps{
 
             sh """
                 ls -lrt
@@ -16,6 +23,8 @@ pipeline{
                 cd target/
                 ls -lrt
             """
+            }
+         
         }
     }
 }
