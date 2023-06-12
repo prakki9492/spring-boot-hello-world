@@ -20,13 +20,6 @@ pipeline{
            
         }
 
-        stage("code analysis")
-        {
-            steps{
-                with
-            }
-        }
-        
          stage("Code Analysis"){
             steps {
                 withSonarQubeEnv('sonar-10.0') {
