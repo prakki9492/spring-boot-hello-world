@@ -1,28 +1,10 @@
 pipeline{
     agent 'any'
 
-    
-    stages {
-
-        stage("Build Stage")
+    stages{
+        stage("env stage")
         {
-            steps {
-                 sh """
-                mvn install
-                ls -lrt target/
-                mv target/*.jar  target/demoapp-${BUILD_NUMBER}.jar
-                ls -lrt target/
-                 """
-            }
-           
-        }
-
-         stage("Code Analysis"){
-            steps {
-                withSonarQubeEnv('sonar-10.0') {
-                    sh "mvn sonar:sonar"
-                }
-            }
+            sh "env"
         }
     }
 }
