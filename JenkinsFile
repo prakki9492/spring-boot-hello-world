@@ -7,7 +7,25 @@ pipeline{
             steps {
                     sh "env"
             }
-            
+        }
+
+        stage("Build stage")
+        {
+            steps{
+                sh """
+                    mvn install
+                    ls -lrt target/
+                    mv target/*.jar target/spring-boot-hello-world-${BUILD_NUMBER}.jar
+                    ls -lrt target/
+                """
+            }
+        }
+    }
+
+    post
+    {
+        always{
+            cleanWS()
         }
     }
 }
